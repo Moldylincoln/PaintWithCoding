@@ -74,14 +74,14 @@ headers = {"Authorization": f"Bearer {api_key}"}
 
 @app.route('/')
 def getEmojiGeneratedImage():
-print("Sending authorized request to Pollinations...")
-response = requests.get(url, headers=headers)
+    print("Sending authorized request to Pollinations...")
+    response = requests.get(url, headers=headers)
 
-if response.status_code == 200:
-    with open("output_cat.jpg", "wb") as f:
-        return convert_image_to_emoji(response.content, output_width=30)
-    print("Success! Image saved to output_cat.jpg")
-else:
-    print(f"Failed with status code: {response.status_code}")
+    if response.status_code == 200:
+      with open("output_cat.jpg", "wb") as f:
+          return convert_image_to_emoji(response.content, output_width=30)
+          print("Success! Image saved to output_cat.jpg")
+      else:
+          print(f"Failed with status code: {response.status_code}")
     
 app.run(host='0.0.0.0', port=8080)

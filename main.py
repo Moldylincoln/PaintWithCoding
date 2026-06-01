@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 def get_emoji_palette():
     return {
+    # --- Original Base Colors & Fruits ---
         (255, 0, 0): "🟥",
         (255, 165, 0): "🟧",
         (255, 255, 0): "🟨",
@@ -20,7 +21,86 @@ def get_emoji_palette():
         (0, 0, 0): "⬛",
         (125, 125, 125): "🩶",
         (255, 255, 255): "⬜",
+        (220, 20, 60): "🍎",
+        (50, 205, 50): "🍏",
+        (255, 69, 0): "🍉",
+        (255, 105, 180): "🍓",
+        (139, 0, 0): "🍒",
+        (255, 99, 71): "🍅",
+        (255, 140, 0): "🍊",
+        (244, 164, 96): "🍍",
+        (255, 165, 79): "🍑",
+        (255, 215, 0): "🍋",
+        (255, 255, 0): "🍌",
+        (154, 205, 50): "🍐",
+        (144, 238, 144): "🍈",
+        (186, 85, 211): "🍇",
+        (218, 112, 214): "🫐",
+        (210, 105, 30): "🥝",
+        (210, 180, 140): "🥥",
+        (107, 142, 35): "🫒",
+        (128, 0, 32): "🥭",
+    
+        # --- Vegetables ---
+        (34, 139, 34): "🥦",    # Broccoli (Dark Green)
+        (0, 100, 0): "🥬",      # Leafy Green
+        (85, 107, 47): "🫑",    # Bell Pepper (Green)
+        (143, 188, 143): "🥒",  # Cucumber
+        (46, 139, 87): "🫛",    # Pea Pod
+        (255, 127, 80): "🥕",   # Carrot
+        (218, 165, 32): "🌽",   # Corn
+        (184, 134, 11): "🥔",   # Potato
+        (205, 133, 63): "🍠",   # Sweet Potato
+        (138, 43, 226): "🍆",   # Eggplant
+        (216, 191, 216): "🧅",  # Onion
+        (245, 245, 220): "🧄",  # Garlic
+        (210, 180, 140): "🍄",  # Mushroom
+    
+        # --- Animals ---
+        (255, 192, 203): "🐷",  # Pig Face (Pink)
+        (255, 182, 193): "🦩",  # Flamingo (Light Pink)
+        (240, 128, 128): "🐙",  # Octopus (Coral)
+        (210, 105, 30): "🦧",   # Orangutan (Red-Brown)
+        (244, 164, 96): "🦊",   # Fox (Sandy Orange)
+        (255, 140, 0): "🐅",    # Tiger
+        (255, 223, 0): "🐤",    # Baby Chick (Bright Yellow)
+        (255, 215, 0): "🦁",    # Lion
+        (173, 255, 47): "🪲",   # Beetle (Yellow-Green)
+        (50, 205, 50): "🐸",    # Frog
+        (0, 128, 128): "🦚",    # Peacock (Teal)
+        (30, 144, 255): "🐋",   # Whale (Sky Blue)
+        (0, 0, 139): "🐟",      # Fish (Deep Blue)
+        (75, 0, 130): "👾",     # Alien Monster (Indigo)
+        (147, 112, 219): "🪼",  # Jellyfish (Light Purple)
+        (160, 82, 45): "🐻",    # Bear (Sienna Brown)
+        (139, 69, 19): "🦫",    # Beaver (Dark Brown)
+        (105, 105, 105): "🦏",  # Rhinoceros (Dim Gray)
+        (169, 169, 169): "🐨",  # Koala (Dark Gray)
+        (211, 211, 211): "🦭",  # Seal (Light Gray)
+        (245, 245, 245): "🐑",  # Ewe (White)
+    
+        # --- Random / Objects / Nature ---
+        (178, 34, 34): "🎈",    # Balloon (Firebrick Red)
+        (255, 20, 147): "🎀",   # Ribbon (Deep Pink)
+        (255, 160, 122): "salmon", # 🍣 Sushi
+        (255, 69, 0): "🔥",     # Fire (Orange-Red)
+        (255, 165, 0): "🎃",    # Jack-O-Lantern
+        (238, 232, 170): "🧀",  # Cheese (Pale Goldenrod)
+        (240, 230, 140): "🌟",  # Star (Khaki Yellow)
+        (124, 252, 0): "🌱",    # Seedling (Lawn Green)
+        (0, 250, 154): "🧪",    # Test Tube (Medium Spring Green)
+        (0, 206, 209): "💎",    # Diamond (Dark Turquoise)
+        (70, 130, 180): "💧",   # Droplet (Steel Blue)
+        (65, 105, 225): "🌀",   # Cyclone (Royal Blue)
+        (153, 50, 204): "🔮",   # Crystal Ball (Dark Orchid)
+        (219, 112, 147): "🌺",  # Hibiscus (Pale Violet Red)
+        (101, 67, 33): "💩",    # Pile of Poo (Dark Brown)
+        (139, 115, 85): "🪵",   # Wood
+        (112, 128, 144): "⚙️",   # Gear (Slate Gray)
+        (192, 192, 192): "🪙",  # Coin (Silver)
+        (248, 248, 255): "👻",  # Ghost (Ghost White)
     }
+    
 
 def find_closest_emoji(pixel, palette):
     r, g, b = pixel[:3]

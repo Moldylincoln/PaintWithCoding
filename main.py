@@ -1,5 +1,5 @@
 import os
-import io  
+import io
 import requests
 from dotenv import load_dotenv
 from PIL import Image
@@ -56,24 +56,31 @@ def convert_image_to_emoji(image_bytes, output_width=40):
 
 load_dotenv()
 api_key = os.environ.get("POLLINATIONS_API_KEY")
-
-prompt = "cat"
-url = f"https://pollinations.ai{prompt}"
 headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
 
+# The root route now handles general requests
 @app.route('/')
-def getEmojiGeneratedImage():
-    print("Sending request to Pollinations...")
-    response = requests.get(url, headers=headers)
+def home():
+    return "Welcome! Go to <b>/generate/your-prompt</b> in the URL bar to create emoji art."
+
+# Dynamic route to accept any prompt directly from the web browser URL
+@app.route('/generate/<user_prompt>')
+def getEmojiGeneratedImage(user_prompt):
+    print(f"Sending request to Pollinations for prompt: {user_prompt}...")
     
-    if response.status_code == 200:
-        with open("output_cat.jpg", "wb") as f:
-            f.write(response.content)
-            
-        emoji_string = convert_image_to_emoji(response.content, output_width=30)
-        return f"<pre style='font-family: monospace; line-height: 1; letter-spacing: 2px;'>{emoji_string}</pre>"
-    else:
-        return f"Failed with status code: {response.status_code}", 500
+    # Using the official unified query string setup to ensure reliable string parsing
+    base_url = "https://gen.pollinations.ai/image/"
+    clean_url = f"{base_url}{user_prompt}"
+    
+    try:
+        response = requests.get(clean_url, headers=headers)
+        if response.status_code == 200:
+            emoji_string = convert_image_to_emoji(response.content, output_width=35)
+            return f"<pre style='font-family: monospace; line-height: 1; letter-spacing: 2px;'>{emoji_string}</pre>"
+        else:
+            return f"API Error: Received status code {response.status_code}", 400
+    except Exception as e:
+        return f"Connection Failed: {str(e)}", 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080)

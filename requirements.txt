@@ -1,6 +1,4 @@
-fastapi
-uvicorn
-openai
-httpx
-pillow
-numpy
+flask
+requests
+python-dotenv
+Pillow

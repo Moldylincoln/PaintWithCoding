@@ -9,15 +9,16 @@ app = Flask(__name__)
 
 def get_emoji_palette():
     return {
-        (255, 0, 0): "🔴",
-        (255, 165, 0): "🟠",
-        (255, 255, 0): "🟡",
-        (0, 128, 0): "🟢",
-        (0, 0, 255): "🔵",
-        (128, 0, 128): "🟣",
-        (165, 42, 42): "🟤",
-        (0, 0, 0): "⚫",
-        (255, 255, 255): "⚪",
+        (255, 0, 0): "🟥",
+        (255, 165, 0): "🟧",
+        (255, 255, 0): "🟨",
+        (0, 128, 0): "🟩",
+        (0, 0, 255): "🟦",
+        (128, 0, 128): "🟪",
+        (165, 42, 42): "🟫",
+        (0, 0, 0): "⬛",
+        (125, 125, 125): "🩶",
+        (255, 255, 255): "⬜",
     }
 
 def find_closest_emoji(pixel, palette):
@@ -75,7 +76,7 @@ def getEmojiGeneratedImage(user_prompt):
     try:
         response = requests.get(clean_url, headers=headers)
         if response.status_code == 200:
-            emoji_string = convert_image_to_emoji(response.content, output_width=35)
+            emoji_string = convert_image_to_emoji(response.content, output_width=55)
             return f"<pre style='font-family: monospace; line-height: 1; letter-spacing: 2px;'>{emoji_string}</pre>"
         else:
             return f"API Error: Received status code {response.status_code}", 400

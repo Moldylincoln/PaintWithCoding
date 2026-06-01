@@ -12,6 +12,7 @@ def get_emoji_palette():
         (255, 0, 0): "🟥",
         (255, 165, 0): "🟧",
         (255, 255, 0): "🟨",
+        (255, 234, 192): "🥪",
         (0, 128, 0): "🟩",
         (0, 0, 255): "🟦",
         (128, 0, 128): "🟪",
@@ -76,7 +77,7 @@ def getEmojiGeneratedImage(user_prompt):
     try:
         response = requests.get(clean_url, headers=headers)
         if response.status_code == 200:
-            emoji_string = convert_image_to_emoji(response.content, output_width=55)
+            emoji_string = convert_image_to_emoji(response.content, output_width=125)
             return f"<pre style='font-family: monospace; line-height: 1; letter-spacing: 2px;'>{emoji_string}</pre>"
         else:
             return f"API Error: Received status code {response.status_code}", 400

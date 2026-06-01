@@ -63,7 +63,7 @@ def convert_image_to_emoji(image_path, output_width=40):
 
 load_dotenv()
 
-api_key = os.getenv("POLLINATIONS_API_KEY")
+api_key = os.environ.get("POLLINATIONS_API_KEY")
 
 if not api_key:
     raise ValueError("Missing POLLINATIONS_API_KEY environment variable.")
